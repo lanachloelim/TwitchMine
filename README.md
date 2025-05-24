@@ -2,8 +2,6 @@
 
 **TwitchMine**! A Python script that collects, sanitizes, and stores Twitch chat messages into SQLite databases. It currently follows 5 of the top Twitch channels (**KaiCenat, PokiMane, Jynxzi, CaseOh, JasonTheWeen**).
 
----
-
 ## 📦 Features
 
 - ✅ Real-time Twitch chat logging  
@@ -11,8 +9,6 @@
 - 🧹 URL sanitization  
 - 🗂 Organized by channel and timestamp  
 - 🧪 **Ideal for training LLMs**
-
----
 
 ## 📜 Components
 
@@ -41,11 +37,7 @@ data/
 
 Each `.db` file is labeled by start stream timestamp and contains a table named `messages` with columns for `id`, `timestamp`, `channel`, `user_hash`, and `content`.
 
----
-
 ## 🚀 Getting Started
-
----
 
 ## 📞 Contact
 
