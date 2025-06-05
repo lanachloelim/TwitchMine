@@ -68,10 +68,11 @@ class ChatListenerBot(commands.Bot):
         self.channel = channel
         self.session_start = session_start
         #self.mongo_client = MongoClient(mongo_uri)
+        MONGO_URI = os.getenv("MONGO_URI")
         self.mongo_client = MongoClient(
             MONGO_URI,
             tls=True,
-            tlsCAFile=certifi.where()  # or "/etc/ssl/certs/ca-bundle.crt"
+            tlsAllowInvalidCertificates=True # Temporary fix for MongoDB Atlas
         )
         self.db = self.mongo_client["twitch_mine"]
         self.collection = self.db[channel]
