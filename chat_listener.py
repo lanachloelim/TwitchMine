@@ -10,6 +10,7 @@ import re
 import hashlib
 import multiprocessing
 from pymongo import MongoClient
+import certifi
 
 
 #################################################
