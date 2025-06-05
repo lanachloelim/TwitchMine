@@ -15,7 +15,7 @@
 
 A script that uses the [TwitchIO](https://twitchio.dev/) library to:
 - Detect when a channel is live and start listening
-- Hash usernames (`SHA256`) and sanitize messages (replace with '<URL>' / '@<USER>')
+- Hash usernames (`SHA256`) and sanitize messages (replace with `<URL>` / `@<USER>`)
 - Organize data by `channel` : { `session_start`, `timestamp`, `username`, and `content` } and stored in a MongoDB collection
 
 ## 🚀 Getting Started
