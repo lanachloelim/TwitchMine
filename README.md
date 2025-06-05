@@ -1,43 +1,26 @@
 # TwitchMine
 
-**TwitchMine**! A Python script that collects, sanitizes, and stores Twitch chat messages into SQLite databases. It currently follows 5 of the top Twitch channels (**KaiCenat, PokiMane, Jynxzi, CaseOh, JasonTheWeen**).
+**TwitchMine**! A Python script that collects, sanitizes, and stores Twitch chat messages in a MongoDB collection. It currently follows 5 of the top Twitch channels (**KaiCenat, PokiMane, Jynxzi, CaseOh, JasonTheWeen**).
 
 ## 📦 Features
 
-- ✅ Real-time Twitch chat logging  
-- 🔒 Privacy-safe (username hashing) 
-- 🧹 URL sanitization  
-- 🗂 Organized by channel and timestamp  
-- 🧪 **Ideal for training LLMs**
+- ✅ Recording Twitch chat messages in real-time  
+- 🔒 Privacy-safe (username hashing, URL sanitization) 
+- 🗂 Data organized by channel
+- ⚙️ **Ideal for training LLMs**
 
 ## 📜 Components
 
 ### `chat_listener.py`
 
 A script that uses the [TwitchIO](https://twitchio.dev/) library to:
-- Connect to Twitch chat via IRC
-- Hash usernames (`SHA256`)
-- Strip links from messages
-- Store everything in a `.db` file under `data/<channel>/`
-
-### `/data`
-
-Folder structure:
-
-```
-data/
-├── KaiCenat
-│   ├── 20250524005632.db
-│   └── ...
-├── PokiMane
-├── ...
-```
-
-### `.db` files
-
-Each `.db` file is labeled by start stream timestamp and contains a table named `messages` with columns for `id`, `timestamp`, `channel`, `user_hash`, and `content`.
+- Detect when a channel is live and start listening
+- Hash usernames (`SHA256`) and sanitize messages (replace with '<URL>' / '@<USER>')
+- Organize data by `channel` : { `session_start`, `timestamp`, `username`, and `content` } and stored in a MongoDB collection
 
 ## 🚀 Getting Started
+
+This project runs in a virtual environment (AWS EC2 instance) and writes to a cloud database (MongoDB Atlas).
 
 ## 📞 Contact
 
