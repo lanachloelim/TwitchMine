@@ -67,13 +67,12 @@ class ChatListenerBot(commands.Bot):
         super().__init__(token=token, prefix='!', initial_channels=[channel])
         self.channel = channel
         self.session_start = session_start
-        self.mongo_client = MongoClient(mongo_uri)
-        # MONGO_URI = os.getenv("MONGO_URI")
-        # self.mongo_client = MongoClient(
-        #     MONGO_URI,
-        #     tls=True,
-        #     tlsAllowInvalidCertificates=True # Temporary fix for MongoDB Atlas
-        # )
+        #self.mongo_client = MongoClient(mongo_uri)
+        self.mongo_client = MongoClient(
+            MONGO_URI,
+            tls=True,
+            tlsCAFile=certifi.where()
+        )
         self.db = self.mongo_client["twitch_mine"]
         self.collection = self.db[channel]
 
